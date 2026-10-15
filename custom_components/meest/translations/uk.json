@@ -1,0 +1,54 @@
+{
+  "title": "Meest",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Meest",
+        "description": "Введіть дані акаунта Meest. Пароль не зберігається.",
+        "data": {
+          "username": "Телефон / логін",
+          "password": "Пароль"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Повторний вхід у Meest",
+        "description": "Сесія завершилася. Увійдіть повторно.",
+        "data": {
+          "username": "Телефон / логін",
+          "password": "Пароль"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Meest відхилив вхід. Перевірте логін і пароль.",
+      "cannot_connect": "Не вдалося отримати відповідь Meest.",
+      "rate_limited": "Meest обмежив запити. Спробуйте пізніше.",
+      "wrong_account": "Увійдіть у той самий акаунт Meest."
+    },
+    "abort": {
+      "already_configured": "Цей акаунт уже додано.",
+      "reauth_successful": "Вхід оновлено."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Налаштування Meest",
+        "data": {
+          "update_interval": "Інтервал оновлення (хвилини)",
+          "include_business_parcels": "Показувати бізнес-посилки"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "ready_for_pickup": {
+        "name": "Готово до видачі"
+      },
+      "in_transit": {
+        "name": "У дорозі"
+      }
+    }
+  }
+}

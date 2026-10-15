@@ -1,0 +1,29 @@
+type: markdown
+content: |-
+  {% set ns = namespace(found=false, in_transit=0, unavailable=false) %}
+  {% for entity_id in integration_entities('meest') | sort %}
+    {% if entity_id.startswith('sensor.') %}
+      {% if states(entity_id) in ['unknown', 'unavailable'] %}
+        {% set ns.unavailable = true %}
+      {% endif %}
+      {% if state_attr(entity_id, 'parcels') is not none and state_attr(entity_id, 'locations') is none %}
+        {% set ns.in_transit = ns.in_transit + (states(entity_id) | int(0)) %}
+      {% endif %}
+      {% for location in state_attr(entity_id, 'locations') or [] %}
+        {% if location.parcels | length > 0 and states(entity_id) not in ['unknown', 'unavailable'] %}
+          {% set ns.found = true %}
+
+  <div><strong>{{ 'Поштомат' if location.type == 'post_station' else 'Відділення' }} №{{ location.branch_number | e }}</strong><br><small>{{ location.address | e }}</small></div>
+
+          {% for parcel in location.parcels %}
+  - {{ parcel.name | e }}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  {% if ns.unavailable %}
+  _Не вдалося оновити частину даних Meest._
+  {% elif not ns.found %}
+  _Зараз жодної посилки не прибуло. {{ ns.in_transit }} ще в дорозі_
+  {% endif %}

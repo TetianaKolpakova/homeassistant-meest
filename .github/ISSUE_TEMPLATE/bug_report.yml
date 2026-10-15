@@ -1,0 +1,28 @@
+name: Bug report / Помилка
+description: Report a problem without account credentials or parcel details.
+body:
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant Core version
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Meest integration version
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and steps to reproduce
+      description: Remove passwords, tokens, phone numbers, tracking numbers, names and addresses.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized error message
+      description: Never attach raw API replies, config entries, backups or account test reports.
+      render: text

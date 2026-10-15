@@ -1,0 +1,54 @@
+{
+  "title": "Meest",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Meest",
+        "description": "Enter your Meest credentials. Your password is not stored.",
+        "data": {
+          "username": "Phone / login",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in to Meest again",
+        "description": "Your session expired. Sign in again.",
+        "data": {
+          "username": "Phone / login",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Meest rejected your login. Check your credentials.",
+      "cannot_connect": "Unable to read the Meest API.",
+      "rate_limited": "Meest rate limit reached. Try later.",
+      "wrong_account": "Sign in to the same Meest account."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "reauth_successful": "Reauthentication successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Meest options",
+        "data": {
+          "update_interval": "Update interval (minutes)",
+          "include_business_parcels": "Include business parcels"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "ready_for_pickup": {
+        "name": "Ready for pickup"
+      },
+      "in_transit": {
+        "name": "In transit"
+      }
+    }
+  }
+}
